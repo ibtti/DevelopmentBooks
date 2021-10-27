@@ -2,7 +2,6 @@ package com.bnp.mytest.utils;
 
 public class BooksSetDiscount {
 
-
     private int differentCopies;
     private int discount;
 

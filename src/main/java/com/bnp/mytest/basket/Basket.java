@@ -1,31 +1,31 @@
 package com.bnp.mytest.basket;
 
-import com.bnp.mytest.book.Book;
-
+import com.bnp.mytest.models.BasketItems;
+import com.bnp.mytest.models.Book;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Basket {
+
     private List<BasketItems> cartItems = new ArrayList<>();
+    private PriceCalculator priceCalculator;
 
-    private IPriceCalculator priceCalculator;
 
-
-    public Basket(IPriceCalculator priceCalculator){
+    public Basket(PriceCalculator priceCalculator){
         this.priceCalculator = priceCalculator;
     }
 
     public void add(Book book) {
 
-        BasketItems existedItem = null;
+        BasketItems existed = null;
 
         for (BasketItems item:cartItems){
             if (item.getBook().equals(book))
-                existedItem = item;
+                existed = item;
         }
 
-        if (existedItem != null)
-            existedItem.changeQuantity(existedItem.getQuantity() + 1);
+        if (existed != null)
+            existed.changeQuantity(existed.getQuantity() + 1);
         else
             cartItems.add(new BasketItems(book, 1));
     }

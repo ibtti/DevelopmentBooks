@@ -1,8 +1,7 @@
-package com.bnp.mytest.basket;
-
-import com.bnp.mytest.book.Book;
+package com.bnp.mytest.models;
 
 public class BasketItems {
+
     private Book book;
     private int quantity;
 

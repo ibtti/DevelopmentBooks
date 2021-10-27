@@ -1,6 +1,6 @@
 package com.bnp.mytest.utils;
 
-import com.bnp.mytest.book.Book;
+import com.bnp.mytest.models.Book;
 
 public class Catalog {
 

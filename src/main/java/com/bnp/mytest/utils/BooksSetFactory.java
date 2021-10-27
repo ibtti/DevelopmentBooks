@@ -1,8 +1,7 @@
 package com.bnp.mytest.utils;
 
-import com.bnp.mytest.basket.BasketItems;
-import com.bnp.mytest.book.Book;
-
+import com.bnp.mytest.models.BasketItems;
+import com.bnp.mytest.models.Book;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +14,7 @@ public class BooksSetFactory {
         this.discounts = discounts;
     }
 
-    
+
     public List<BooksSet> getDifferentBooksSetsWithMaxTotalDiscount(List<BasketItems> basketItems) {
 
         List<BooksSet> optimizeSetList;

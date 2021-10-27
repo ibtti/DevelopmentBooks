@@ -1,10 +1,11 @@
 package com.bnp.mytest.utils;
 
-import com.bnp.mytest.book.Book;
+import com.bnp.mytest.models.Book;
 
 import java.util.HashSet;
 
 public class BooksSet {
+
     private HashSet<Book> books;
     private int discount;
 

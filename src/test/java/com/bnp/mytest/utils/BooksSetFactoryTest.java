@@ -1,11 +1,10 @@
 package com.bnp.mytest.utils;
 
-import com.bnp.mytest.basket.BasketItems;
+import com.bnp.mytest.models.BasketItems;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -15,48 +14,47 @@ public class BooksSetFactoryTest {
 
     @BeforeEach
     public void setup(){
-        List<BooksSetDiscount> byDifferentCopiesDiscountList = new ArrayList<>();
+        List<BooksSetDiscount> differentCopiesDiscountList = new ArrayList<>();
 
-        byDifferentCopiesDiscountList.add(new BooksSetDiscount(2,5));
-        byDifferentCopiesDiscountList.add(new BooksSetDiscount(3,10));
-        byDifferentCopiesDiscountList.add(new BooksSetDiscount(4,20));
-        byDifferentCopiesDiscountList.add(new BooksSetDiscount(5,25));
+        differentCopiesDiscountList.add(new BooksSetDiscount(2,5));
+        differentCopiesDiscountList.add(new BooksSetDiscount(3,10));
+        differentCopiesDiscountList.add(new BooksSetDiscount(4,20));
+        differentCopiesDiscountList.add(new BooksSetDiscount(5,25));
 
-        booksSetFactory = new BooksSetFactory(byDifferentCopiesDiscountList);
+        booksSetFactory = new BooksSetFactory(differentCopiesDiscountList);
     }
 
-    // extract one set of four books when cart items are one copy for first four books
     @Test
     public void extractOneSetOfFourBooks(){
         //Given
-        List<BasketItems> shoppingCartItems = GivenABasketItems(1,1,1,1,0);
+        List<BasketItems> basketItems = GivenABasketItems(1,1,1,1,0);
         //When
-        List<BooksSet> booksSets = booksSetFactory.getDifferentBooksSetsWithMaxTotalDiscount(shoppingCartItems);
+        List<BooksSet> booksSets = booksSetFactory.getDifferentBooksSetsWithMaxTotalDiscount(basketItems);
         //Then
         assertThat(booksSets.size(), is(1));
         assertThat(booksSets.get(0).getBooks().size(), is(4));
     }
 
-    private List<BasketItems> GivenABasketItems(int quantityBookI, int quantityBookII, int quantityBookIII,
-                                                           int quantityBookIV,int quantityBookV ){
-        List<BasketItems> shoppingCartItems = new ArrayList<>();
+    private List<BasketItems> GivenABasketItems(int quantityFirstBook, int quantitySecondBook, int quantityThirdBook,
+                                                           int quantityFourthBook,int quantityFifthBook ){
+        List<BasketItems> basketItems = new ArrayList<>();
 
-        if (quantityBookI > 0)
-            shoppingCartItems.add(new BasketItems(Catalog.GivenACleanArchitectureBook(),quantityBookI));
+        if (quantityFirstBook > 0)
+            basketItems.add(new BasketItems(Catalog.GivenACleanArchitectureBook(),quantityFirstBook));
 
-        if (quantityBookII > 0)
-            shoppingCartItems.add(new BasketItems(Catalog.GivenAWorkingEffectivelyWithLegacyCodeBook(),quantityBookII));
+        if (quantitySecondBook > 0)
+            basketItems.add(new BasketItems(Catalog.GivenAWorkingEffectivelyWithLegacyCodeBook(),quantitySecondBook));
 
-        if (quantityBookIII > 0)
-            shoppingCartItems.add(new BasketItems(Catalog.GivenACleanCodeBook(),quantityBookIII));
+        if (quantityThirdBook > 0)
+            basketItems.add(new BasketItems(Catalog.GivenACleanCodeBook(),quantityThirdBook));
 
-        if (quantityBookIV > 0)
-            shoppingCartItems.add(new BasketItems(Catalog.GivenATestDrivenDevelopmentByExampleBook(),quantityBookIV));
+        if (quantityFourthBook > 0)
+            basketItems.add(new BasketItems(Catalog.GivenATestDrivenDevelopmentByExampleBook(),quantityFourthBook));
 
-        if (quantityBookV > 0)
-            shoppingCartItems.add(new BasketItems(Catalog.GivenATheCleanCoderBook(),quantityBookV));
+        if (quantityFifthBook > 0)
+            basketItems.add(new BasketItems(Catalog.GivenATheCleanCoderBook(),quantityFifthBook));
 
-        return shoppingCartItems;
+        return basketItems;
     }
 
 }

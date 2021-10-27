@@ -1,4 +1,4 @@
-package com.bnp.mytest.book;
+package com.bnp.mytest.models;
 
 public class Book {
     private Long id;
